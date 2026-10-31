@@ -1,4 +1,6 @@
 import img2 from '../assets/Students_Learning_Together.jpeg'
+import google from '../assets/google.png'
+import vasto from '../assets/vasto-transparent.png'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUser} from "@fortawesome/free-solid-svg-icons/faUser";
 import {faEnvelope, faLock,} from "@fortawesome/free-solid-svg-icons";
@@ -11,10 +13,12 @@ function Login(){
 
                     <div className="flex items-center justify-center flex-col gap-3">
                         <h1 className="text-3xl text-white font-bold">Sign in to WorkSpace</h1>
-                        <p>Get started with us </p>
+                        <p>Get started with </p>
                         <div className="flex items-center justify-center flex-row gap-3">
-                            <button className="border border-gray-500 rounded-2xl px-12 py-4">Google</button>
-                            <button className="border border-gray-500 rounded-2xl px-12 py-4">Vasto</button>
+                            <button className="border hover:cursor-pointer hover:-translate-y-1 transition-all border-gray-500
+                            flex flex-row gap-3 rounded-2xl px-12 py-4"><img src={google} alt={"google logo"} height="25cm" width="25cm"/> Google</button>
+                            <button className="border hover:cursor-pointer hover:-translate-y-1 transition-all border-gray-500
+                            flex flex-row gap-3 rounded-2xl px-12 py-4"><img src={vasto} alt={" logo"} height="25cm" width="25cm"/> Vasto</button>
                         </div>
                         <p>or</p>
                     </div>
