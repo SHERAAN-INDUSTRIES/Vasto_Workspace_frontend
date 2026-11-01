@@ -10,20 +10,14 @@ function Login():React.JSX.Element {
     return (
         <>
             <div className="h-full w-full flex justify-center items-center flex-col bg-black">
-                <div className="h-full w-full flex justify-center items-center flex-col gap-3">
+                <div className="h-full w-full flex justify-center items-center flex-col gap-8">
 
-                    <div className="flex items-center justify-center flex-col gap-8">
+                    <div className="flex items-center justify-center flex-col gap-3">
                         <div className="flex items-center justify-center flex-col gap-3">
                             <h1 className="text-3xl text-white font-bold">Sign in to WorkSpace</h1>
-                            <p>Continue to work space with </p>
+                            <p>Continue with your vasto account to Log in workspace</p>
                         </div>
-                        <div className="flex items-center justify-center flex-row gap-3">
-                            <button className="border hover:cursor-pointer hover:-translate-y-1 transition-all border-gray-500
-                            flex flex-row gap-3 rounded-2xl px-12 py-4"><img src={google} alt={"google logo"} height="25cm" width="25cm"/> Google</button>
-                            <button className="border hover:cursor-pointer hover:-translate-y-1 transition-all border-gray-500
-                            flex flex-row gap-3 rounded-2xl px-12 py-4"><img src={vasto} alt={" logo"} height="25cm" width="25cm"/> Vasto</button>
-                        </div>
-                        <p>or</p>
+
                     </div>
                     <div>
                         <Link to={"http://127.0.0.1:8000/accounts/login?workspace=true/"} target={"_blank"}>
@@ -36,7 +30,6 @@ function Login():React.JSX.Element {
                     <div className="w-10/13 flex justify-center items-center gap-5 flex-col">
                         <p>Don't have a Vasto account? <span className="text-white cursor-pointer"><Link to={"https://Pwaninet.app/users/register/"} target={"_blank"}>Sign up</Link></span></p>
                     </div>
-
                 </div>
             </div>
         </>
