@@ -26,15 +26,15 @@ function Login():React.JSX.Element {
                         <p>or</p>
                     </div>
                     <div>
-                        <a href={"https://Pwaninet.app/accounts/login/?next=&workspace=true/"} target="_blank">
+                        <Link to={"http://127.0.0.1:8000/accounts/login?workspace=true/"} target={"_blank"}>
                             <button className="border hover:cursor-pointer
                             hover:-translate-y-1 transition-all px-12 py-4 rounded-4xl bg-white
                             text-black border-gray-500">Continue With Vasto <FontAwesomeIcon icon={faLongArrowRight}/>
                             </button>
-                        </a>
+                        </Link>
                     </div>
                     <div className="w-10/13 flex justify-center items-center gap-5 flex-col">
-                        <p>Don't have a Vasto account? <span className="text-white cursor-pointer"><Link to={"vasto"}>Sign up</Link></span></p>
+                        <p>Don't have a Vasto account? <span className="text-white cursor-pointer"><Link to={"https://Pwaninet.app/users/register/"} target={"_blank"}>Sign up</Link></span></p>
                     </div>
 
                 </div>
