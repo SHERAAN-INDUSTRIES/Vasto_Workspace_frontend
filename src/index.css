@@ -1,3 +1,102 @@
+@import url('https://googleapis.com');
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
 @import "tailwindcss";
+
+@theme {
+    /* ==============================
+       BRAND COLORS
+    ============================== */
+
+    --color-vasto-blue: #087BFF;
+    --color-vasto-electric: #00A6FF;
+    --color-vasto-cyan: #00D4FF;
+    --color-vasto-indigo: #2925FF;
+    --color-vasto-purple: #693BFF;
+
+    /* ==============================
+       BACKGROUND COLORS
+    ============================== */
+
+    --color-background: #030817;
+    --color-background-secondary: #071329;
+    --color-background-tertiary: #0B1932;
+
+    --color-surface: #0C1930;
+    --color-surface-secondary: #101E38;
+    --color-surface-tertiary: #162542;
+
+    /* ==============================
+       GLASS / CARD COLORS
+    ============================== */
+
+    --color-glass: #101C35;
+    --color-glass-light: #192A49;
+    --color-glass-border: #263F68;
+
+    /* ==============================
+       TEXT COLORS
+    ============================== */
+
+    --color-text-primary: #F8FAFF;
+    --color-text-secondary: #B8C7E6;
+    --color-text-muted: #8192B2;
+    --color-text-disabled: #52617C;
+
+    /* ==============================
+       BORDER COLORS
+    ============================== */
+
+    --color-border: #1D3152;
+    --color-border-light: #304B75;
+    --color-border-focus: #087BFF;
+
+    /* ==============================
+       STATUS COLORS
+    ============================== */
+
+    --color-success: #22C985;
+    --color-warning: #FFB547;
+    --color-danger: #FF5368;
+    --color-info: #20B8FF;
+
+    /* ==============================
+       GRADIENT COLORS
+    ============================== */
+
+    --color-gradient-start: #00B7FF;
+    --color-gradient-middle: #087BFF;
+    --color-gradient-end: #2925FF;
+
+    /* ==============================
+       FONTS
+    ============================== */
+
+    --font-sans: "Inter", sans-serif;
+    --font-heading: "Space Grotesk", sans-serif;
+
+    /* ==============================
+       FONT SIZES
+    ============================== */
+
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+    --text-4xl: 2.25rem;
+    --text-5xl: 3rem;
+
+    /* ==============================
+       BORDER RADIUS
+    ============================== */
+
+    --radius-card: 1rem;
+    --radius-panel: 1.25rem;
+    --radius-input: 0.625rem;
+}
 
 

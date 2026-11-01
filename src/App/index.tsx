@@ -1,7 +1,5 @@
 import React from "react";
 import img2 from '../assets/Students_Learning_Together.jpeg'
-import google from '../assets/google.png'
-import vasto from '../assets/vasto-transparent.png'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faLongArrowRight} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
