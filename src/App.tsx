@@ -1,7 +1,8 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Loader from './App/index'
+import React from "react";
 
-function App() {
+function App():React.JSX.Element {
   
 
   return (

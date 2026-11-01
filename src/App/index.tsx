@@ -1,19 +1,22 @@
+import React from "react";
 import img2 from '../assets/Students_Learning_Together.jpeg'
 import google from '../assets/google.png'
 import vasto from '../assets/vasto-transparent.png'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faUser} from "@fortawesome/free-solid-svg-icons/faUser";
-import {faEnvelope, faLock,} from "@fortawesome/free-solid-svg-icons";
+import {faLongArrowRight} from "@fortawesome/free-solid-svg-icons";
+import {Link} from "react-router-dom";
 
-function Login(){
+function Login():React.JSX.Element {
     return (
         <>
             <div className="h-full w-full flex justify-center items-center flex-col bg-black">
-                <form className="h-full w-full flex justify-center items-center flex-col gap-3">
+                <div className="h-full w-full flex justify-center items-center flex-col gap-3">
 
-                    <div className="flex items-center justify-center flex-col gap-3">
-                        <h1 className="text-3xl text-white font-bold">Sign in to WorkSpace</h1>
-                        <p>Get started with </p>
+                    <div className="flex items-center justify-center flex-col gap-8">
+                        <div className="flex items-center justify-center flex-col gap-3">
+                            <h1 className="text-3xl text-white font-bold">Sign in to WorkSpace</h1>
+                            <p>Continue to work space with </p>
+                        </div>
                         <div className="flex items-center justify-center flex-row gap-3">
                             <button className="border hover:cursor-pointer hover:-translate-y-1 transition-all border-gray-500
                             flex flex-row gap-3 rounded-2xl px-12 py-4"><img src={google} alt={"google logo"} height="25cm" width="25cm"/> Google</button>
@@ -22,38 +25,25 @@ function Login(){
                         </div>
                         <p>or</p>
                     </div>
-
-                    <div className="h-1/2 w-10/12 flex justify-around items-center flex-col" >
-                        <div className="flex justify-start items-start flex-col gap-2">
-                            <label><FontAwesomeIcon icon={faUser}/> User Name</label>
-                            <input type={"text"} placeholder={"John Doo"} className="py-1.5 px-2.5 bg-[white]
-                            rounded-2xl text-gray-900 h-12 w-80"/>
-                        </div>
-                        <div className="flex justify-start items-start flex-col gap-2">
-                            <label><FontAwesomeIcon icon={faEnvelope}/> Email</label>
-                            <input type={"email"} placeholder={"P........m@gmail.com"} className="py-1.5 px-2.5 bg-[white]
-                            rounded-2xl text-gray-900 h-12 w-80"/>
-                        </div>
-                        <div className="flex justify-start items-start flex-col gap-2">
-                            <label><FontAwesomeIcon icon={faLock}/> Password</label>
-                            <input type={"password"} placeholder={"Password"} className="py-1.5 px-2.5 bg-[white]
-                            rounded-2xl text-gray-900 h-12 w-80"/>
-                        </div>
-
+                    <div>
+                        <a href={"https://Pwaninet.app/accounts/login/?next=&workspace=true/"} target="_blank">
+                            <button className="border hover:cursor-pointer
+                            hover:-translate-y-1 transition-all px-12 py-4 rounded-4xl bg-white
+                            text-black border-gray-500">Continue With Vasto <FontAwesomeIcon icon={faLongArrowRight}/>
+                            </button>
+                        </a>
                     </div>
-
                     <div className="w-10/13 flex justify-center items-center gap-5 flex-col">
-                        <button type={"submit"} className="w-[50%] py-2 px-7 hover:cursor-pointer hover:bg-gray-700 hover:-translate-y-1 transition-all bg-gray-900 rounded-2xl text-white">Sign in</button>
-                        <p>Don't have a Vasto account? <span className="text-white cursor-pointer">Sign up</span></p>
+                        <p>Don't have a Vasto account? <span className="text-white cursor-pointer"><Link to={"vasto"}>Sign up</Link></span></p>
                     </div>
 
-                </form>
+                </div>
             </div>
         </>
     )
 }
 
-function Loader(){
+function Loader():React.JSX.Element {
     return(
         <>
             <section className="h-dvh w-full grid grid-cols-2 gap-0 text-[15px] relative text-gray-400">
