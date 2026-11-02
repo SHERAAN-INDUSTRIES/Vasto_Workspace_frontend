@@ -1,4 +1,6 @@
 import React from "react";
+import imgBrand from '../assets/brand/vasto-transparent.png'
+import svgDivider from '../assets/svg_page_devider/intersecting-waves-scattered.svg'
 import img2 from '../assets/Students_Learning_Together.jpeg'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faLongArrowRight} from "@fortawesome/free-solid-svg-icons";
@@ -7,21 +9,25 @@ import {Link} from "react-router-dom";
 function Login():React.JSX.Element {
     return (
         <>
-            <div className="h-full w-full flex justify-center items-center flex-col bg-black">
+            <div>
+                <img className="absolute" src={svgDivider} alt="svg"/>
+            </div>
+            <div className="h-full w-full flex justify-center items-center flex-col bg-background-dark">
                 <div className="h-full w-full flex justify-center items-center flex-col gap-8">
 
                     <div className="flex items-center justify-center flex-col gap-3">
                         <div className="flex items-center justify-center flex-col gap-3">
+                            <img src={imgBrand} alt={"vasto"} height={60} width={60} />
                             <h1 className="text-3xl text-white font-bold">Sign in to WorkSpace</h1>
-                            <p>Continue with your vasto account to Log in workspace</p>
+                            <p>Continue with your vasto account to Sign in to workspace</p>
                         </div>
 
                     </div>
                     <div>
-                        <Link to={"http://127.0.0.1:8000/accounts/login?workspace=true/"} target={"_blank"}>
+                        <Link to={"http://127.0.0.1:8000/workspace/sync/"} target={"_blank"}>
                             <button className="border hover:cursor-pointer
-                            hover:-translate-y-1 transition-all px-12 py-4 rounded-4xl bg-white
-                            text-black border-gray-500">Continue With Vasto <FontAwesomeIcon icon={faLongArrowRight}/>
+                            hover:-translate-y-2 transition-all flex justify-center items-center flex-row gap-3 group px-12 py-4 rounded-4xl bg-white
+                            text-black border-gray-500">Continue With Vasto <FontAwesomeIcon className=" group-hover:translate-x-5 transition-all duration-150" icon={faLongArrowRight}/>
                             </button>
                         </Link>
                     </div>

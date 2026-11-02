@@ -19,6 +19,7 @@
        BACKGROUND COLORS
     ============================== */
 
+    --color-background-dark: #000006;
     --color-background: #030817;
     --color-background-secondary: #071329;
     --color-background-tertiary: #0B1932;
@@ -89,6 +90,7 @@
     --text-3xl: 1.875rem;
     --text-4xl: 2.25rem;
     --text-5xl: 3rem;
+    --text-media: clamp(4rem, 25vw, 20rem);
 
     /* ==============================
        BORDER RADIUS
