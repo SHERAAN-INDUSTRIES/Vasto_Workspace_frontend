@@ -91,6 +91,7 @@
     --text-4xl: 2.25rem;
     --text-5xl: 3rem;
     --text-media: clamp(4rem, 22vw, 20rem);
+    --text-barner: clamp(4rem, 20vw, 20rem);
 
     /* ==============================
        BORDER RADIUS
