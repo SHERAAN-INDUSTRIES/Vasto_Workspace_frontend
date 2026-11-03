@@ -11,7 +11,7 @@ function App():React.JSX.Element {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Loader/>} />
-          <Route path="*" element={<FourOhFour/>} />
+        <Route path="*" element={<FourOhFour/>} />
       </Routes>
     </BrowserRouter>
   )
