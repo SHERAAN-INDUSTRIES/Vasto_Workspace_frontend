@@ -9,17 +9,17 @@ function FourOhFour():React.JSX.Element {
     useGSAP(():void => {
         let time = gsap.timeline({yoyo:true})
         time.from(".astronut", {
-            x:"200%",
-            y:"-25%",
-            duration:200,
-            delay:1,
+            x: "200%",
+            y: "-25%",
+            duration: 200,
+            delay: 1,
         })
-            .to(".astronut",{
-                x:"400%",
-                y:"50%",
-                duration:200,
-                delay:1
-            })
+            .to(".astronut", {
+                x: "400%",
+                y: "50%",
+                duration: 200,
+                delay: 1
+            }).then()
     },{scope:containerRef})
     return (
         <>
