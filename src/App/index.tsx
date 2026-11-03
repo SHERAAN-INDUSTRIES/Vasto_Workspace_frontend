@@ -6,26 +6,6 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faLongArrowRight} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
 
-type WorkspaceIdentity = {
-    id: number;
-    username: string;
-    first_name: string;
-    last_name: string;
-    display_name: string;
-    email: string;
-    email_verified: boolean;
-    profile_picture: string | null;
-    status: string;
-};
-
-type AuthMeResponse = {
-    status: string;
-    message: string;
-    authenticated: boolean;
-    user: WorkspaceIdentity;
-    session?: Record<string, unknown>;
-};
-
 function SignIn():React.JSX.Element {
     return (
         <>
@@ -59,82 +39,7 @@ function SignIn():React.JSX.Element {
 }
 
 function Login():React.JSX.Element {
-    const [authState, setAuthState] = React.useState<'checking' | 'signed-in' | 'signed-out' | 'error'>('checking');
-    const [authResponse, setAuthResponse] = React.useState<AuthMeResponse | null>(null);
-
-    React.useEffect(() => {
-        const controller = new AbortController();
-
-        fetch('/api/auth/me/', {
-            credentials: 'same-origin',
-            headers: { Accept: 'application/json' },
-            signal: controller.signal,
-        })
-            .then(async (response) => {
-                if (response.status === 401) {
-                    setAuthState('signed-out');
-                    return;
-                }
-                if (!response.ok) {
-                    throw new Error(`Session check failed (${response.status}).`);
-                }
-
-                const data: AuthMeResponse = await response.json();
-                if (!data.authenticated || !data.user) {
-                    setAuthState('signed-out');
-                    return;
-                }
-
-                setAuthResponse(data);
-                setAuthState('signed-in');
-            })
-            .catch((error: unknown) => {
-                if (error instanceof Error && error.name === 'AbortError') return;
-                setAuthState('error');
-            });
-
-        return () => controller.abort();
-    }, []);
-
-    if (authState === 'signed-out') return <SignIn />;
-
-    return (
-        <div className="h-full w-full flex justify-center items-center flex-col bg-background-dark px-8">
-            <div className="flex max-w-lg flex-col items-center gap-4 text-center">
-                <img src={imgBrand} alt="Vasto" height={60} width={60} />
-                {authState === 'checking' && <p role="status">Checking your Workspaces sign-in…</p>}
-                {authState === 'signed-in' && authResponse && (
-                    <>
-                        {authResponse.user.profile_picture && (
-                            <img
-                                className="h-20 w-20 rounded-full object-cover"
-                                src={authResponse.user.profile_picture}
-                                alt={`${authResponse.user.display_name || authResponse.user.username} profile`}
-                            />
-                        )}
-                        <h1 className="text-3xl text-white font-bold">You’re signed in to Workspaces</h1>
-                        <p>Authenticated response (session details hidden for this preview):</p>
-                        <pre className="w-full max-w-3xl overflow-auto rounded-lg bg-black/40 p-4 text-left text-xs text-green-200">
-                            {JSON.stringify(
-                                Object.fromEntries(
-                                    Object.entries(authResponse).filter(([key]) => key !== 'session')
-                                ),
-                                null,
-                                2
-                            )}
-                        </pre>
-                    </>
-                )}
-                {authState === 'error' && (
-                    <>
-                        <h1 className="text-3xl text-white font-bold">Could not check your sign-in</h1>
-                        <p>Make sure the Workspaces backend is running, then try again.</p>
-                        <button className="btn btn-primary" onClick={() => window.location.reload()}>Try again</button>
-                    </>
-                )}
-            </div>
-        </div>
-    );
+    return <SignIn />;
 }
 
 function Loader():React.JSX.Element {

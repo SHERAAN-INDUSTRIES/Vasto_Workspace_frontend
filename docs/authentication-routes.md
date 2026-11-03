@@ -9,7 +9,7 @@ The browser starts at the frontend origin. Vite proxies `/api` to Workspaces dur
 1. Navigate the browser to `GET /api/auth/vasto/start/`.
 2. Workspaces redirects through Vasto sign-in and returns the browser to the configured frontend URL after successful authorization.
 3. The browser retains the Workspaces HttpOnly session cookie.
-4. Call `GET /api/auth/me/` with credentials to get the current user profile. Do not send a user ID to identify the caller.
+4. The current frontend returns to its sign-in page after authorization and continues to show the **Continue With Vasto** button. It does not fetch or display the authenticated profile response.
 
 ## Routes
 
@@ -21,9 +21,9 @@ Starts authorization. Navigate the browser to this route; do not use `fetch` bec
 - **Success:** redirect to Vasto's sign-in/authorization page, then back through the Workspaces callback.
 - **Browser behavior:** keep the navigation in the same window and allow cookies.
 
-### `GET /api/auth/me/`
+### `GET /api/auth/me/` (available for frontend integration; not currently called by this page)
 
-Returns the signed-in Workspaces user. Call after the callback redirect and on page load when checking whether the browser already has a Workspaces session.
+Returns the signed-in Workspaces user. The route is available to frontend features that need the profile, but the current page does not call it or show its response.
 
 Example:
 
@@ -68,8 +68,6 @@ if (response.status === 401) {
 ```
 
 `user.id` belongs to the Workspaces database. The Workspaces backend stores the Vasto OIDC issuer and `sub` in its identity-link table; the frontend does not need that provider identifier. `profile_picture` can be `null`. Session expiry is informational; the session key is held in an HttpOnly cookie and is not part of this response.
-
-For the current integration preview, the signed-in screen renders this response JSON with the `session` object hidden. When `user.profile_picture` is present, the screen also displays the image.
 
 #### Signed out: `401 Unauthorized`
 

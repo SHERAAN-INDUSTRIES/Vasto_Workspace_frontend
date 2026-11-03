@@ -12,7 +12,7 @@ The **Continue With Vasto** link starts authorization through the Workspaces bac
    npm run dev
    ```
 
-3. Open **http://127.0.0.1:3000/** (use `127.0.0.1`, not `localhost`) and select **Continue With Vasto**. The browser goes to the Workspaces authorization-start endpoint, completes the Vasto sign-in, then returns to the frontend. The frontend checks `/api/auth/me/` and shows the signed-in Workspaces identity (including its local user ID and profile picture, when present) instead of the sign-in button.
+3. Open **http://127.0.0.1:3000/** (use `127.0.0.1`, not `localhost`) and select **Continue With Vasto**. The browser goes to the Workspaces authorization-start endpoint, completes the Vasto sign-in, then returns to the frontend. The page keeps showing the **Continue With Vasto** button; it does not display the authenticated profile response.
 
 The development proxy is configured in `vite.config.ts`. The Workspaces backend's local `.env` must set `WORKSPACES_FRONTEND_URL=http://127.0.0.1:3000/` so the OAuth callback returns to the same frontend origin. The frontend never receives or handles the OAuth client secret or authorization code.
 
