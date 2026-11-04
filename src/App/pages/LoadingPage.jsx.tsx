@@ -12,6 +12,7 @@ function LoadingPage():React.JSX.Element{
         let split = SplitText.create(".loader",{type:"chars"})
         gsap.from(split.chars,{
             y:200,
+            rotate:4,
             delay:1,
             autoAlpha:0,
             stagger:0.07,

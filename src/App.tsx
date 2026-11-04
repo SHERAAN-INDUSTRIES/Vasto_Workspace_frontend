@@ -5,15 +5,17 @@ import Loader from './App/index'
 import LoadingPage from "./App/pages/LoadingPage.jsx.tsx";
 import FourOhFour from "./App/pages/404.tsx";
 import OnMobile from "./App/pages/ResponiveMedia.jsx.tsx";
+import Dashboard from "./App/Dashboad/Dashboad.tsx";
 
 function App():React.JSX.Element {
 
     return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Loader/>} />
-        <Route path="/loadingPage" element={<LoadingPage/>} />
-        <Route path="*" element={<FourOhFour/>} />
+        <Route path={"/"} element={<Loader/>} />
+        <Route path={"/loadingPage"} element={<LoadingPage/>} />
+        <Route path={"/workspace"} element={<Dashboard/>} />
+        <Route path={"*"} element={<FourOhFour/>} />
       </Routes>
     </BrowserRouter>
   )
