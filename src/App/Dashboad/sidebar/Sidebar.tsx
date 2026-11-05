@@ -24,11 +24,7 @@ function Sidebar():React.JSX.Element {
                      duration-200 hover:rounded-sm hover:w-full hover:py-2">
                         <FontAwesomeIcon icon={faHouse}/> <span className="hidden group-hover:block">Home</span>
                     </button>
-                    <button className="group flex flex-row w-auto gap-8 py-3 px-4 rounded-3xl items-center justify-around
-                     border border-gray-200 hover:-translate-y-1 hover:cursor-pointer focus:outline-none transition
-                     duration-200 hover:rounded-2xl">
-                        <FontAwesomeIcon icon={faHouse}/> <span className="hidden group-hover:block">Home</span>
-                    </button>
+
                 </div>
 
             </section>

@@ -16,7 +16,7 @@
     --color-vasto-purple: #693BFF;
 
     /* ==============================
-       BACKGROUND COLORS
+       BACKGROUND COLORS 60% - Dominant
     ============================== */
 
     --color-background-dark: #000006;
@@ -29,7 +29,7 @@
     --color-surface-tertiary: #162542;
 
     /* ==============================
-       GLASS / CARD COLORS
+       GLASS / CARD COLORS 30% - Secondary
     ============================== */
 
     --color-glass: #101C35;
@@ -37,7 +37,7 @@
     --color-glass-border: #263F68;
 
     /* ==============================
-       TEXT COLORS
+       TEXT COLORS 10% - Accent
     ============================== */
 
     --color-text-primary: #F8FAFF;

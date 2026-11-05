@@ -24,7 +24,7 @@ function SignIn():React.JSX.Element {
 
                     </div>
                     <div>
-                        <a href={"/api/auth/vasto/start/"} className="border hover:cursor-pointer
+                        <a href="http://127.0.0.1:8001/api/auth/vasto/start/" target="_blank" rel="noreferrer" className="border hover:cursor-pointer
                             hover:-translate-y-2 transition-all flex justify-center items-center flex-row gap-3 group px-12 py-4 rounded-4xl bg-white
                             text-black border-gray-500">Continue With Vasto <FontAwesomeIcon className=" group-hover:translate-x-5 transition-all duration-150" icon={faLongArrowRight}/>
                         </a>
@@ -39,6 +39,27 @@ function SignIn():React.JSX.Element {
 }
 
 function Login():React.JSX.Element {
+
+     async function userSession():Promise<any>{
+        try {
+            const response:Response = await fetch("http://127.0.0.1:8001/api/auth/me/", { method: 'GET' });
+
+            if (!response.ok) {
+                console.log(`HTTP error! status: ${response.status}`);
+            }
+
+            const data:any = await response.json();
+            console.log(data);
+            return data;
+
+        } catch (error) {
+            console.error("Failed to fetch user session:", error);
+            return null;
+        }
+    }
+
+    const user:Promise<any> = userSession();
+     console.log(user);
     return <SignIn />;
 }
 
