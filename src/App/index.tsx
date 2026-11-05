@@ -24,10 +24,10 @@ function SignIn():React.JSX.Element {
 
                     </div>
                     <div>
-                        <Link to={"http://127.0.0.1:8000/workspace/sync/"} target={'_blank'} className="border hover:cursor-pointer
+                        <a href={"/api/auth/vasto/start/"} className="border hover:cursor-pointer
                             hover:-translate-y-2 transition-all flex justify-center items-center flex-row gap-3 group px-12 py-4 rounded-4xl bg-white
                             text-black border-gray-500">Continue With Vasto <FontAwesomeIcon className=" group-hover:translate-x-5 transition-all duration-150" icon={faLongArrowRight}/>
-                        </Link>
+                        </a>
                     </div>
                     <div className="w-10/13 flex justify-center items-center gap-5 flex-col">
                         <p>Don't have a Vasto account? <span className="text-white cursor-pointer"><Link to={"https://Pwaninet.app/users/register/"} target={"_blank"}>Sign up</Link></span></p>
