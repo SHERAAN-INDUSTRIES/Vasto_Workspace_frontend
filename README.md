@@ -2,7 +2,7 @@
 
 ## Local Vasto sign-in
 
-The **Continue With Vasto** link starts authorization through the Workspaces backend at `/api/auth/vasto/start/`. During development, Vite proxies `/api` requests to `http://127.0.0.1:8001`; the browser stays on the same hostname through sign-in so the Workspaces session cookie is available after the callback.
+The **Continue With Vasto** link starts authorization directly through the Workspaces backend at `http://127.0.0.1:8001/api/auth/vasto/start/`. Frontend API requests use credentialed cross-origin requests, and the Workspaces backend allows the frontend origin through CORS.
 
 1. Complete setup in the Vasto and Workspaces backend repositories, then start both backend servers as described in the [Workspaces setup guide](../VastoWorkspacesBackend/docs/development/local-vasto-oidc-client-setup.md). Vasto uses port `8000`; Workspaces uses port `8001`.
 2. In this repository, install frontend packages if needed and start Vite:
@@ -12,9 +12,9 @@ The **Continue With Vasto** link starts authorization through the Workspaces bac
    npm run dev
    ```
 
-3. Open **http://127.0.0.1:3000/** (use `127.0.0.1`, not `localhost`) and select **Continue With Vasto**. The browser goes to the Workspaces authorization-start endpoint, completes the Vasto sign-in, then returns to the frontend. The page keeps showing the **Continue With Vasto** button; it does not display the authenticated profile response.
+3. Set `VITE_WORKSPACES_API_URL=http://127.0.0.1:8001` in a frontend `.env.local`, open **http://127.0.0.1:3000/** (use `127.0.0.1`, not `localhost`) and select **Continue With Vasto**. The browser goes to the Workspaces authorization-start endpoint, completes Vasto sign-in, then returns to the frontend. The page keeps showing the **Continue With Vasto** button; it does not display the authenticated profile response.
 
-The development proxy is configured in `vite.config.ts`. The Workspaces backend's local `.env` must set `WORKSPACES_FRONTEND_URL=http://127.0.0.1:3000/` so the OAuth callback returns to the same frontend origin. The frontend never receives or handles the OAuth client secret or authorization code.
+The Workspaces backend's local `.env` must include `http://127.0.0.1:3000` in `CORS_ALLOWED_ORIGINS` and set `WORKSPACES_FRONTEND_URL=http://127.0.0.1:3000/` so the OAuth callback returns to the frontend. The frontend never receives or handles the OAuth client secret or authorization code.
 
 For frontend route methods and response examples, see [Authentication routes](docs/authentication-routes.md).
 

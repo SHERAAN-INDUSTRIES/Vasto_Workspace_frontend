@@ -4,9 +4,9 @@ This document is the frontend-facing route and response reference for signing in
 
 ## Sign-in flow
 
-The browser starts at the frontend origin. Vite proxies `/api` to Workspaces during local development; production needs an equivalent same-origin proxy or compatible credentialed cross-origin cookie setup.
+The browser starts at the frontend origin and calls Workspaces at the API origin directly. Cross-origin API requests must use `credentials: 'include'`; Workspaces must allow the exact frontend origin through credentialed CORS.
 
-1. Navigate the browser to `GET /api/auth/vasto/start/`.
+1. Navigate the browser to `GET {WORKSPACES_API_URL}/api/auth/vasto/start/`.
 2. Workspaces redirects through Vasto sign-in and returns the browser to the configured frontend URL after successful authorization.
 3. The browser retains the Workspaces HttpOnly session cookie.
 4. The current frontend returns to its sign-in page after authorization and continues to show the **Continue With Vasto** button. It does not fetch or display the authenticated profile response.
@@ -28,8 +28,8 @@ Returns the signed-in Workspaces user. The route is available to frontend featur
 Example:
 
 ```ts
-const response = await fetch('/api/auth/me/', {
-  credentials: 'same-origin',
+const response = await fetch(`${WORKSPACES_API_URL}/api/auth/me/`, {
+  credentials: 'include',
   headers: { Accept: 'application/json' },
 });
 

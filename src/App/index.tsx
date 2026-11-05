@@ -6,6 +6,8 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faLongArrowRight} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
 
+const WORKSPACES_API_URL = import.meta.env.VITE_WORKSPACES_API_URL || 'http://127.0.0.1:8001';
+
 function SignIn():React.JSX.Element {
     return (
         <>
@@ -24,7 +26,7 @@ function SignIn():React.JSX.Element {
 
                     </div>
                     <div>
-                        <a href="/api/auth/vasto/start/" className="border hover:cursor-pointer
+                        <a href={`${WORKSPACES_API_URL}/api/auth/vasto/start/`} className="border hover:cursor-pointer
                             hover:-translate-y-2 transition-all flex justify-center items-center flex-row gap-3 group px-12 py-4 rounded-4xl bg-white
                             text-black border-gray-500">Continue With Vasto <FontAwesomeIcon className=" group-hover:translate-x-5 transition-all duration-150" icon={faLongArrowRight}/>
                         </a>
@@ -42,9 +44,9 @@ function Login():React.JSX.Element {
 
      async function userSession():Promise<any>{
         try {
-            const response:Response = await fetch("/api/auth/me/", {
+            const response:Response = await fetch(`${WORKSPACES_API_URL}/api/auth/me/`, {
                 method: 'GET',
-                credentials: 'same-origin',
+                credentials: 'include',
                 headers: { Accept: 'application/json' },
             });
 
