@@ -81,6 +81,7 @@ function Loader():React.JSX.Element {
                     </div>
                 </div>
                 <div>
+                    <SignIn />
                 </div>
             </section>
         </>
