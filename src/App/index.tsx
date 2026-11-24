@@ -81,7 +81,6 @@ function Loader():React.JSX.Element {
                     </div>
                 </div>
                 <div>
-                    <Login />
                 </div>
             </section>
         </>
