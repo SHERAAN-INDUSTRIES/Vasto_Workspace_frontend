@@ -1,65 +1,65 @@
-import React from 'react'
-import Container from "../../Components/Container.tsx";
-import Buttons from "../../Components/Buttons.tsx"
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faHouse, faDollar, faMessage, faUsers} from "@fortawesome/free-solid-svg-icons";
-import logo from '../../../assets/brand/vasto-transparent.png'
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHouse, faRobot, faCode, faVideo, faComments, faFileLines, faFolder, faEllipsis, faDollar } from "@fortawesome/free-solid-svg-icons";
+import logo from "../../../assets/brand/vasto-transparent.png";
 
-function Sidebar():React.JSX.Element {
-    function Sidebar():React.JSX.Element{
-        return(
-            <>
-                <div className="flex p-2 flex-row gap-1">
-                    <button className="h-full w-auto">
-                        <img src={logo} alt="logo" className="h-15 w-15 bg-cover" />
-                    </button>
-                    <div className="gap-3.5">
-                        <h1 className="font-heading text-lg font-bold">VASTO</h1>
-                        <p>workspace</p>
-                    </div>
-                </div>
-                <div className="flex justify-center items-center p-2">
-                    <span className="w-[90%] h-0.5 bg-border rounded-full"></span>
-                </div>
-                <div className="h-[70%] w-full px-2 py-2.5 flex flex-col gap-6 items-center justify-start">
-                    <div className="w-full grid grid-cols-1 gap-4">
+export type WorkspaceView = "Home" | "AI Assistant" | "Code Editor" | "Video Meetings" | "Group Chat" | "Documents" | "Projects" | "More";
 
-                        <Buttons icon={faHouse} text={"Home"} typ={"side-bar"} func={():void=>alert("Home")}/>
-                        <Buttons icon={faMessage} text={"Message"} typ={"side-bar"} func={():void=>alert("Message")}/>
-                        <Buttons icon={faUsers} text={"Group"} typ={"side-bar"} func={():void=>alert("Group")}/>
-                        <span className="text-sm w-full text-text-secondary">Workspace</span>
-                        <Buttons icon={faHouse} text={"Home"} typ={"side-bar"} func={():void=>alert("Home")}/>
-                        <Buttons icon={faHouse} text={"Home"} typ={"side-bar"} func={():void=>alert("Home")}/>
-                        <Buttons icon={faHouse} text={"Home"} typ={"side-bar"} func={():void=>alert("Home")}/>
-                        <Buttons icon={faHouse} text={"Home"} typ={"side-bar"} func={():void=>alert("Home")}/>
-                        <Buttons icon={faHouse} text={"Home"} typ={"side-bar"} func={():void=>alert("Home")}/>
+type SidebarProps = {
+    activeView: WorkspaceView;
+    onNavigate: (view: WorkspaceView) => void;
+};
 
-                    </div>
+const navItems: Array<{ label: WorkspaceView; icon: typeof faHouse }> = [
+    { label: "Home", icon: faHouse },
+    { label: "AI Assistant", icon: faRobot },
+    { label: "Code Editor", icon: faCode },
+    { label: "Video Meetings", icon: faVideo },
+    { label: "Group Chat", icon: faComments },
+    { label: "Documents", icon: faFileLines },
+    { label: "Projects", icon: faFolder },
+    { label: "More", icon: faEllipsis },
+];
 
-                    <div className="w-45 bg-glass/65 border border-glass-border rounded-input px-2.5 py-2.5 mx-0.5 mb-2.5 backdrop-blur-md hover:border-border-light hover:shadow-[0_4px_16px_rgba(0,0,0,0.2)] transition-all min-w-0">
-                        <div className="text-s font-semibold text-text-primary mb-0.5 truncate">
-                            Pro workspace
-                        </div>
-                        <div className="text-[0.6rem] text-text-muted mb-2 leading-snug line-clamp-2">Unlock AI agents,
-                            unlimited docs &amp; team groups
-                        </div>
-                        <button className="w-full nav-item group relative flex justify-center items-center gap-2.5 px-2 py-2 rounded-input text-sm
-                        font-medium text-text-secondary border border-transparent hover:bg-gradient-middle hover:text-text-primary hover:-translate-y-1
-                        hover:cursor-pointer  transition-all duration-200 min-w-0">
-                            <FontAwesomeIcon icon={faDollar}/> Upgrade now
-                        </button>
-                    </div>
-
-                </div>
-
-            </>
-        )
-    }
+function Sidebar({ activeView, onNavigate }: SidebarProps): React.JSX.Element {
     return (
-        <>
-            <Container type={"side-bar"} element={Sidebar()}/>
-        </>
-    )
+        <div className="h-full rounded-panel border border-glass-border bg-glass/75 p-3 flex flex-col">
+            <div className="h-[68px] flex items-center gap-3 px-2">
+                <img src={logo} alt="Vasto" className="h-10 w-10" />
+                <div>
+                    <h1 className="font-heading text-lg font-bold">VASTO</h1>
+                    <p className="text-[10px] uppercase tracking-[0.25em] text-vasto-cyan">Workspace</p>
+                </div>
+            </div>
+            <div className="h-px bg-glass-border mx-2 mb-3" />
+
+            <nav className="flex-1 space-y-1">
+                {navItems.map(({ label, icon }) => (
+                    <button
+                        key={label}
+                        type="button"
+                        onClick={() => onNavigate(label)}
+                        className={`w-full h-11 px-3 rounded-input flex items-center gap-3 text-sm transition-colors ${
+                            activeView === label
+                                ? "border border-vasto-blue/50 bg-vasto-blue/20 text-white"
+                                : "border border-transparent text-text-secondary hover:bg-surface-tertiary hover:text-white"
+                        }`}
+                    >
+                        <FontAwesomeIcon icon={icon} className="w-4" />
+                        <span>{label}</span>
+                    </button>
+                ))}
+            </nav>
+
+            <div className="mt-auto rounded-input border border-glass-border bg-[#09142a] p-3">
+                <p className="text-sm font-semibold">Pro workspace</p>
+                <p className="mt-1 text-[11px] leading-relaxed text-text-muted">Unlock AI agents, unlimited documents and team groups.</p>
+                <button type="button" className="mt-3 h-9 w-full rounded-input bg-vasto-blue/15 border border-vasto-blue/30 text-sm">
+                    <FontAwesomeIcon icon={faDollar} className="mr-2" /> Upgrade now
+                </button>
+            </div>
+        </div>
+    );
 }
 
 export default Sidebar;

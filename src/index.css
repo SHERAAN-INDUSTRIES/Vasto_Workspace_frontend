@@ -4,6 +4,16 @@
 
 @import "tailwindcss";
 
+@keyframes bottom-sheet-enter {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
 @theme {
 
     /* ==============================
